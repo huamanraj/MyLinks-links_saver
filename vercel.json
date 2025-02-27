@@ -2,14 +2,9 @@
   "version": 2,
   "buildCommand": "npm run build",
   "framework": "vite",
-  "buildEnvironment": {
-    "NODE_OPTIONS": "--max-old-space-size=4096"
-  },
-  "functions": {
-    "api/*.js": {
-      "memory": 1024
-    }
-  },
+  
+  
+  
   "env": {
     "ROLLUP_NATIVE": "0"
   }
