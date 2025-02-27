@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: Inter, system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-[#121212] text-white;
+  }
+  
+  /* Custom scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-[#21262D];
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#DB4551] rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#DB4551]/80;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add custom theme colors to access in components */
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #21262D;
+  --accent: #DB4551;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0A0;
+  --profile-color: #6F59DD;
+}
