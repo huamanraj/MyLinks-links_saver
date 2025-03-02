@@ -17,6 +17,29 @@ const LinkForm = ({ onSave, editingLink, onCancelEdit }) => {
     }
   }, [editingLink]);
 
+  // Function to fetch the title from the URL
+  const fetchTitleFromUrl = async (url) => {
+    try {
+      const response = await fetch(`https://api.linkpreview.net?key=09a36449f63d4957454e99769f2ecd38&q=${url}`);
+      const data = await response.json();
+      if (data.title) {
+        setTitle(data.title);
+      }
+    } catch (error) {
+      console.error("Failed to fetch title:", error);
+    }
+  };
+
+  const handleUrlChange = (e) => {
+    const newUrl = e.target.value;
+    setUrl(newUrl);
+    
+    // Fetch title when URL changes
+    if (newUrl) {
+      fetchTitleFromUrl(newUrl);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -65,7 +88,7 @@ const LinkForm = ({ onSave, editingLink, onCancelEdit }) => {
           type="text"
           placeholder="Enter URL"
           value={url}
-          onChange={(e) => setUrl(e.target.value)}
+          onChange={handleUrlChange}
           className="flex-1 bg-transparent border-none outline-none text-white placeholder-[#A0A0A0]"
           required
         />
